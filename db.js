@@ -1,21 +1,25 @@
-import pg from 'pg';
+import pkg from 'pg';
 import dotenv from 'dotenv';
 dotenv.config();
 
+// Destructure Pool from the default import
+const { Pool } = pkg;
 
-const db = new pg.Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'UsersToDoList',
-  password: 'Chaitanya@2004',
-  port: 5432
+// Create a new pool with the connection string
+const db = new Pool({
+    connectionString: process.env.POSTGRES_URL, // Using connection string from .env
 });
 
-try {
-  await db.connect();
-  console.log('Connected to the database');
-} catch (err) {
-  console.error('Error connecting to the database:', err);
-}
+// Function to connect to the database
+const connectDB = async () => {
+    try {
+        await db.connect();
+        console.log("Database connection successful");
+    } catch (err) {
+        console.error("Database connection failed", err);
+    }
+};
+
+connectDB();
 
 export default db;
