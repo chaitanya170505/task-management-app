@@ -1,0 +1,29 @@
+
+<%- include('partials/sidebar') %>
+<link rel="stylesheet" href="/styles/dashboardStyles.css">
+
+<div class="dashboard-center">
+    <div class="dashboard-container">
+        <div class="dashboard-child dashboard-child1">
+            <h1 class="dashboard-heading"><%= totalCount %></h1>
+            <p class="dashboard-text"><i class="fas fa-tasks"></i> Total Tasks</p>
+        </div>
+
+        <div class="dashboard-child dashboard-child2">
+            <h1 class="dashboard-heading"><%= upcomingCount %></h1>
+            <p class="dashboard-text"><i class="fas fa-calendar-alt"></i> Upcoming Tasks</p>
+        </div>
+
+        <div class="dashboard-child dashboard-child3">
+            <h1 class="dashboard-heading"><%= completedCount %></h1>
+            <p class="dashboard-text"><i class="fas fa-check-circle"></i> Completed Tasks</p>
+        </div>
+
+        <div class="dashboard-child dashboard-child4">
+            <h1 class="dashboard-heading"><%= overdueCount %></h1>
+            <p class="dashboard-text"><i class="fas fa-exclamation-circle"></i> Overdue Tasks</p>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/sidebar2') %>

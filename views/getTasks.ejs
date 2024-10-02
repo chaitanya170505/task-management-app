@@ -1,0 +1,51 @@
+<!-- task.ejs (or any other template you're using) -->
+<link rel="stylesheet" href="/styles/getTask.css">
+<%- include('partials/sidebar') %>
+
+    <div class="tasks-parent">
+        <% if (tasks.length> 0) { %>
+            <% tasks.forEach(task=> { %>
+                <div class="task-container">
+                    <div class="task-header">
+                        <h3 class="task-title">
+                            <%= task.title %>
+                        </h3>
+                        <span
+                            class="task-priority <%= task.priority === 3 ? 'high-priority' : (task.priority === 2 ? 'mid-priority' : 'low-priority') %>">
+                            Priority: <%= task.priority===3 ? 'High' : (task.priority===2 ? 'Mid' : 'Low' ) %>
+                        </span>
+                    </div>
+                    <div class="task-details">
+                        <p class="task-description">
+                            <%= task.description %>
+                        </p>
+                        <p class="task-due-date"><i class="fas fa-calendar-alt"></i> Due Date: <%=
+                                task.due_date.toDateString() %>
+                        </p>
+                        <p class="task-list"><i class="fas fa-list-ul"></i> List: <%= task.list_name %>
+                        </p>
+                    </div>
+                    <div class="task-actions">
+                        <% if (!task.completed) { %>
+                            <form action="/complete-task/<%= task.id %>" method="POST">
+                                <button type="submit" class="btn-complete"><i class="fas fa-check"></i> Mark as
+                                    Completed</button>
+                            </form>
+                            <% } else { %>
+                                <span class="task-completed">Completed</span>
+                            <% } %>
+                            <form action="/delete-task/<%= task.id %>" method="POST">
+                                    <button type="submit" class="btn-delete"><i class="fas fa-trash"></i>Delete</button>
+                            </form>
+                    </div>
+                </div>
+
+                <% }); %>
+
+    </div>
+
+    <% } else { %>
+        <p class="no-task">No tasks available.</p>
+        <% } %>
+
+            <%- include('partials/sidebar2') %>

@@ -1,0 +1,88 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #3c3c3c;
+    margin: 0;
+}
+
+.dashboard-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    padding: 10px;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) { 
+    .dashboard-container {
+        margin: auto;
+        max-width: 800px;
+        grid-template-columns: 1fr ;
+        
+    }
+}
+
+.dashboard-child {
+    background-color: #000000; 
+    border-radius: 12px; 
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.dashboard-child:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-heading {
+    font-size: 3em;
+    margin: 0;
+    color: white;
+}
+
+.dashboard-text {
+    font-size: 1.3em;
+    margin-top: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; 
+}
+
+.dashboard-text i {
+    color: #ffe100;
+    font-size: 1.2em; 
+}
+
+
+.dashboard-child1 {
+    border-top: 5px solid #ffe100;
+}
+
+.dashboard-child2 {
+    border-top: 5px solid #918105; 
+}
+
+.dashboard-child3 {
+    border-top: 5px solid #ffe100; 
+}
+
+.dashboard-child4 {
+    border-top: 5px solid #918105;
+}
+
+.dashboard-center{
+    margin: auto;
+    height: 90%;
+    width: 90%;
+}
+

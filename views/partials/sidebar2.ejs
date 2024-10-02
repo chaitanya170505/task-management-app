@@ -1,0 +1,128 @@
+</div>  
+<!--the sidebar that comes into display when the screen is below 756px-->
+
+<aside id="sidebar1" class="sidebar1">
+
+  <div class="profile">
+      <div class="profile-img">
+          <img src="/assets/profile-photo.png" alt="profile-photo">
+      </div>
+      <div class="profile-info">
+          <h3 class="name"><%= username %></h3>
+          <p class="mail"><%= usermail %></p>
+          <button class="edit-profile-btn" id="edit-profile-btn2">Edit Profile</button>
+      </div>
+  </div>
+
+  <div class="to-do-content">
+
+      <h3>Quick Actions</h3>
+      <div class="time-divide">
+          <button type="submit" id="add-task2" class="submit-btn">Add Task</button>
+      </div>
+
+      <h3>Tasks Section</h3>
+      <div class="time-divide">
+          <a href="/dashboard" class="submit-btn">Dashboard</a>
+          <a href="/tasks/all" class="submit-btn">All Tasks</a>
+          <a href="/tasks/upcoming" class="submit-btn">Upcoming</a>
+          <a href="/tasks/completed" class="submit-btn">Completed</a>
+          <a href="/tasks/overdue" class="submit-btn">Overdue</a>
+      </div>
+      <h3>Lists Section</h3>
+      <div class="priority-divide">
+          <% lists.forEach((listitem) => { %>
+            <% const capitalizedList = listitem.list.charAt(0).toUpperCase() + listitem.list.slice(1); %>
+            <a href="/lists/<%= listitem.id %>" class="submit-btn"><%= capitalizedList %></a>
+          <% }); %>
+          <button type="submit" id="add-new-list2" class="submit-btn">+ Add New List</button>
+      </div>                      
+  </div>
+
+  <div class="sign-out">
+      <i class="fas fa-sign-out"></i>
+      <a class="sign-out-link" href="/sign-out"><h3>sign-out</h3></a>
+  </div>
+</aside>
+
+
+<!--container to display when clicked on add new task button-->
+
+<div id="add-container" class="todo-add-container" style="display: none;">
+    <h2>Add a New Task</h2>
+    <form id="todo-add-form" method="POST" action="/add-task">
+      <div class="add-form-group">
+        <label for="heading">Heading:</label>
+        <input type="text" id="heading" name="heading" maxlength="50" required>
+      </div>
+      <div class="add-form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" maxlength="100" required></textarea>
+      </div>
+      <div class="add-form-group">
+        <label for="completion-date">Completion Date:</label>
+        <input type="date" id="completion-date" name="completion-date" required>
+      </div>
+      <div class="add-form-group">
+        <label for="priority">Priority:</label>
+        <select id="priority" name="priority" required>
+          <option value="3">High</option>
+          <option value="2">Mid</option>
+          <option value="1">Low</option>
+        </select>
+      </div>
+      <div class="add-form-group">
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+
+            <% lists.forEach((list) => { %>
+              <option value="<%= list.id %>"><%= list.list.charAt(0).toUpperCase() + list.list.slice(1) %></option>
+            <% }); %>
+
+        </select>
+      </div>
+      <button type="submit">Add Task</button>
+    </form>
+  </div>
+
+
+  <!--container that is diplayed when add new list is clicked-->
+
+  <div id="list-container" class="hidden">
+    <button id="list-close-btn" class="close-btn">✖</button> 
+    <div class="todo-add-container">
+      <h2>Add a New List</h2>
+
+        <form id="list-add-form" method="POST" action="/add-list">
+            <div class="add-form-group">
+              <label for="list-name">List Name:</label>
+              <input type="text" id="list-name" name="list-name" maxlength="50" required>
+            </div>
+            <button type="submit">Create List</button>
+        </form>
+
+    </div>
+  </div>
+
+
+
+  <!--container to edit the profile will display on click of edit profile button-->
+  <div class="edit-profile-container" id="editProfileContainer" style="display: none;">
+    <h3>Edit Profile</h3>
+    <form id="editProfileForm" action="/edit-profile" method="POST">
+        <label for="username">Display Name:</label>
+        <input type="text" id="username" name="username" value="<%= username %>" autocomplete="username" required><br>
+        
+        <label for="usermail">Email:</label>
+        <input type="email" id="usermail" name="usermail" value="<%= usermail %>" autocomplete="email" required><br>
+        
+        <button type="submit" class="save-changes-btn">Save Changes</button>
+    </form>
+  </div>
+
+  <div id="overlay" class="hidden"></div>
+
+<script src="/js/script.js"></script>
+
+</body>
+</html>
