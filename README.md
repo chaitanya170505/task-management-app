@@ -23,7 +23,7 @@ A full-stack web application for users to create, manage, and track their tasks 
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/chaitanya170505task-management-website.git
+    git clone https://github.com/chaitanya170505/task-management-app.git
     ```
 2. **Install dependencies**:
     ```bash
